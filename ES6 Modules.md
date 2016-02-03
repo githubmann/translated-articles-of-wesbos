@@ -73,8 +73,12 @@ Pollution and possible collisions within the global name space.
 
 The idea of writing JavaScript modules isn’t new, but with the arrival of ES6 and the industry settling on npm as the preferred package manager for JavaScript, we’re starting to see many devs migrate away from the above workflow and standardizing on using ES6 and npm.
 
+撰写js模块并非新想法了，但是随着es6的到来和作为js最受欢迎的包管理系统npm的成熟，我们开始看到许多开发者已经慢慢从上述的工作流迁移到了es6和Npm并将其标准化
+
 Hold on. npm? Isn’t that for Node?
 Many moons ago, npm began as the package manager for Node.js, but it has since evolved to become the package manager for JavaScript and front end dev in general. Nowadays, we can cut the whole song and dance for installing libraries down to 2 steps:
+
+
 
 Install our dependency from npm, e.g.: npm install lodash --save
 Import it into the file where we need that dependency, e.g.:```js
