@@ -81,9 +81,18 @@ Many moons ago, npm began as the package manager for Node.js, but it has since e
 很久之前，Npm刚开始确实是作为node的包安装管理器，但是后来呢，它慢慢成为了js和前端开发者常用的包安装管理系统。时至今日，我们可以将安装软件包的过程缩减为两步
 
 Install our dependency from npm, e.g.: npm install lodash --save
-Import it into the file where we need that dependency, e.g.:```js
+Import it into the file where we need that dependency, e.g.:
+```js
 import _ from 'lodash';
+```
 There’s a lot more that goes into setting this workflow up, as well as plenty to learn about importing and exporting from modules, so let’s dive into that.
+我们利用npm安装依赖文件，例如：***npm install lodash --save***
+导入依赖到需要的文件中
+```js
+import _ from 'lodash';
+```
+关于工作流还有很多东西需要我们研究，并且有大量的关于导入和导出模块的知识需要学习，所以就让我们一起来探究一下吧。
+
 
 The idea behind Modules
 Instead of just loading everything into the global namespace, we use import and export statements to share things (variables, functions, data, anything…) between files. Each module will import the dependencies that it needs and export anything that should be made import-able by other files.
