@@ -77,8 +77,8 @@ The idea of writing JavaScript modules isn’t new, but with the arrival of ES6 
 
 Hold on. npm? Isn’t that for Node?
 Many moons ago, npm began as the package manager for Node.js, but it has since evolved to become the package manager for JavaScript and front end dev in general. Nowadays, we can cut the whole song and dance for installing libraries down to 2 steps:
-
-
+等一下，Npm？那不是Node专用的吗?
+很久之前，Npm刚开始确实是作为node的包安装管理器，但是后来呢，它慢慢成为了js和前端开发者常用的包安装管理系统。时至今日，我们可以将安装软件包的过程缩减为两步
 
 Install our dependency from npm, e.g.: npm install lodash --save
 Import it into the file where we need that dependency, e.g.:```js
