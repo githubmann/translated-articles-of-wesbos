@@ -1,11 +1,13 @@
 #### the original http://wesbos.com/javascript-modules/
 #An Intro To Using npm and ES6 Modules for Front End Development
+#### http://haoduoshipin.com/v/179
 
-  将npm 和ES6模块机制用在前端开发中的一些相关信息
+    将npm 和ES6模块机制用在前端开发中的一些相关信息
 
 A big thanks to bitHound for sponsoring my time to research and write this article. Ch  eck out their service, which provides continuous analysis and quality checks for both your front and back end JavaScript and its dependencies.
 
-  很感谢bitHound赞助我研究和撰写这篇文章。研究他们的提供的服务，他们的服务提供了持续的分析和质量的检查，在前端和后端的js和其相应的依赖。
+    很感谢bitHound赞助我研究和撰写这篇文章。研究他们的提供的服务，他们的服务提供了持续的分析和质量的
+    检查，在前端和后端的js和其相应的依赖。
 
 The JavaScript landscape is changing quickly and along with it the way that we work with dependencies in our websites and applications.
 
@@ -13,72 +15,87 @@ The JavaScript landscape is changing quickly and along with it the way that we w
 
 This post is for developers who are currently loading in their JavaScript via multiple script tags and finding that dependency management is becoming a little cumbersome as their webpages or applications start to grow.
 
-    这篇博文，适合于那些仍然用多个script标签加载js，发现随着他们的网页数量和应用规模扩大，依赖管理将变得越来越麻烦
+    这篇博文，适合于那些仍然用多个script标签加载js，发现随着他们的网页数量和应用规模扩大，依赖管理将变得
+    越来越麻烦
 
 For a deep dive into everything the spec has to offer, as well as some great comparisons to CommonJS and AMD, check out Axel Rauschmayer’s Exploring ES6 book, particularly chapter 17.
 
-  如果想要深入了解ES6模块规范内容，以及它和Commonjs和AMD的差别，请查看Axel Rauschmayer’s Exploring ES6 book，尤其适合第17章
+    如果想要深入了解ES6模块规范内容，以及它和Commonjs和AMD的差别，请查看Axel Rauschmayer’s Exploring ES
+    6 book，尤其适合第17章
 
   #What are JavaScript Modules?
   
   什么是JS模块
 ```js modules allow us to chunk our code into separate files inside our project or to use open source modules that we can install via npm. Writing your code in modules helps with organization, maintenance, testing, and most importantly, dependency management.
 
-js模块让我们可以把项目代码拆分成一个一个孤立的文件，或者通过Npm安装开源的模块来使用。将你的代码模块化组织可以利于组织，维护，测试，更重要的是依赖的管理。
+    js模块让我们可以把项目代码拆分成一个一个孤立的文件，或者通过Npm安装开源的模块来使用。将你的代码模块化组织
+    可以利于组织，维护，测试，更重要的是依赖的管理。
 
 When we write JavaScript, it’s ideal if we can make modules that do one thing and one thing well. This separation allows us to pull in various modules only when we need them. Modules represent the core principle behind npm — when we need specific functionality, we can install the modules we need and load them into our application.
 
-在我们使用js时，让模块做一件事，并且做好，这是不错的想法。仅当我们需要模块的时候，我们可以给独立的文件拉入模块。模块代表着Npm工具背后的核心理念。有时候我们需要一些很特别的功能，我们可以安装我们需要的模块，并将模块加载入我们的应用中
+    在我们使用js时，让模块做一件事，并且做好，这是不错的想法。仅当我们需要模块的时候，我们可
+    以给独立的文件拉入模块。模块代表着Npm工具背后的核心理念。有时候我们需要一些很特别的功能，我
+    们可以安装我们需要的模块，并将模块加载入我们的应用中
 
 As time goes on, we’re seeing fewer large frameworks that do everything under the sun while seeing more small modules that do one thing and one thing well.
 
-随着时间推移，当我们了解更多的将一件事完成的很好的小模块时，我们就知道我们可以通过模块化机制，用很轻的而很完善的大型框架搭建应用
+    随着时间推移，当我们了解更多的将一件事完成的很好的小模块时，我们就知道我们可以通过模块化机
+    制，用很轻的而很完善的大型框架搭建应用
 
 For example, many of us learned jQuery. It included methods for doing absolutely everything from CSS manipulation to ajax calls. Now, many of us are migrating to libraries like React where often we need to pull in additional packages to perform tasks like ajax or routing.
 
-例如，我们大多数人都学过jQuery。jQuery涵盖了几乎一切方法，可以操作css，可以回调ajax等等。而现在，我们很多人正将重心从jQuery迁移到React中去，React里面 我们需要做的仅仅是下载其他的安装包来执行任务，比如ajax或者routing.
+    例如，我们大多数人都学过jQuery。jQuery涵盖了几乎一切方法，可以操作css，可以回调ajax等等。而现在，
+    我们很多人正将重心从jQuery迁移到React中去，React里面 我们需要做的仅仅是下载其他的安装包来执行任
+    务，比如ajax或者routing.
 
 This article will take a look at using npm and ES6 Modules. There are other registries (e.g. Bower) and other module loaders (e.g. CommonJS and AMD), but there are plenty of articles already on those topics.
 
-这篇文章将对npm和ES6模块的使用做一个简短的介绍。另外，还有其他的类似的产品(e.g. Bower) 和其他模块加载工具 (e.g. CommonJS and AMD),关于这些知识，网上有很多，就不一一赘述了。
+    这篇文章将对npm和ES6模块的使用做一个简短的介绍。另外，还有其他的类似的产品(e.g. Bower) 和其他模
+    块加载工具 (e.g. CommonJS and AMD),关于这些知识，网上有很多，就不一一赘述了。
 
 Whether you are doing Node or frontend development, I believe that ES6 modules and npm are the way forward. If you look at any of the populr open source projectas today, such as React or lodash, you’ll see they have also adopted ES6 modules + npm.
 
-如果你正使用Node或者前端开发,我相信ES6模块是未来发展的方向。如果你关注任何的开源项目，比如React或者lodash，你就会知道他们也已经在采用ES6模块和npm
+    如果你正使用Node或者前端开发,我相信ES6模块是未来发展的方向。如果你关注任何的开源项目，比如React或者
+    lodash，你就会知道他们也已经在采用ES6模块和npm
 
 ###Current workflow
 当前工作流
 
 Many workflows for JavaScript look like this:
-许多Js工作流看起来像这样
+    许多Js工作流看起来像这样
 - Find a plugin or library that you want and download it from GitHub
-找到一个你想要的插件或者库，然后从github上下载即可
+    找到一个你想要的插件或者库，然后从github上下载即可
 - Load it into your website via a script tag
-接着通过script标签加载到你的网站上
+    接着通过script标签加载到你的网站上
 - Access it via a global variable or as a jQuery plugin
 This type of workflow has worked fairly well for years, but not without its issues:
-借助一个全局变量或者作为一个插件访问它
-这些年来，工作流运作的挺棒的，然而并不是没有问题：
+
+    借助一个全局变量或者作为一个插件访问它
+    这些年来，工作流运作的挺棒的，然而并不是没有问题：
 
 
 Updates to the plugins have to be done manually — it’s hard to know when there are critical bug fixes or new functionality available.
 Messy source control history — all dependencies need to be checked into source control and unpleasantness can result when libraries are updated.
-插件需要手动升级——导致很难知道有严重的bug修复或者可用的新功能
+    插件需要手动升级——导致很难知道有严重的bug修复或者可用的新功能
 混乱的版本控制历史——所有的依赖文件都需要加入源码控制中去，然而当库文件更新的时候，一切变得混乱不堪
 
 ***Little to no dependency management*** — many scripts duplicate functionality but could easily ***share that functionality*** via a small module.
 Pollution and possible collisions within the global name space.
-几乎无以来管理——许多脚本功能重复，但是如果采用一个js模块，就很容易实现功能共享
-全局命名空间中的命名污染和冲突
+
+    几乎无以来管理——许多脚本功能重复，但是如果采用一个js模块，就很容易实现功能共享
+    全局命名空间中的命名污染和冲突
 
 The idea of writing JavaScript modules isn’t new, but with the arrival of ES6 and the industry settling on npm as the preferred package manager for JavaScript, we’re starting to see many devs migrate away from the above workflow and standardizing on using ES6 and npm.
 
-撰写js模块并非新想法了，但是随着es6的到来和作为js最受欢迎的包管理系统npm的成熟，我们开始看到许多开发者已经慢慢从上述的工作流迁移到了es6和Npm并将其标准化
+    撰写js模块并非新想法了，但是随着es6的到来和作为js最受欢迎的包管理系统npm的成熟，我们开始
+    看到许多开发者已经慢慢从上述的工作流迁移到了es6和Npm并将其标准化
 
 Hold on. npm? Isn’t that for Node?
 Many moons ago, npm began as the package manager for Node.js, but it has since evolved to become the package manager for JavaScript and front end dev in general. Nowadays, we can cut the whole song and dance for installing libraries down to 2 steps:
-等一下，Npm？那不是Node专用的吗?
-很久之前，Npm刚开始确实是作为node的包安装管理器，但是后来呢，它慢慢成为了js和前端开发者常用的包安装管理系统。时至今日，我们可以将安装软件包的过程缩减为两步
+
+    等一下，Npm？那不是Node专用的吗?
+    很久之前，Npm刚开始确实是作为node的包安装管理器，但是后来呢，它慢慢成为了js和前端开发
+    者常用的包安装管理系统。时至今日，我们可以将安装软件包的过程缩减为两步
 
 Install our dependency from npm, e.g.: npm install lodash --save
 Import it into the file where we need that dependency, e.g.:
@@ -87,17 +104,23 @@ import _ from 'lodash';
 ```
 There’s a lot more that goes into setting this workflow up, as well as plenty to learn about importing and exporting from modules, so let’s dive into that.
 我们利用npm安装依赖文件，例如：***npm install lodash --save***
-导入依赖到需要的文件中
+    导入依赖到需要的文件中
 ```js
 import _ from 'lodash';
-```
-关于工作流还有很多东西需要我们研究，并且有大量的关于导入和导出模块的知识需要学习，所以就让我们一起来探究一下吧。
+```   
+
+    关于工作流还有很多东西需要我们研究，并且有大量的关于导入和导出模块的知识需要学习，所以就
+    让我们一起来探究一下吧。
 
 
 The idea behind Modules
 Instead of just loading everything into the global namespace, we use import and export statements to share things (variables, functions, data, anything…) between files. Each module will import the dependencies that it needs and export anything that should be made import-able by other files.
+支撑这个机制的想法如下
+代替加载所有文件到全局变量中，我们使用导入导出表达式来共享资源（变量，函数，数据，任何事）在文件之中。每个被导入必须的依赖和导出资源的模块应该是可被其他文件导入。
 ```
 Getting everything working in current browsers requires a bundle step. We’ll talk about that later in this article, but for now let’s focus on the core ideas behind JavaScript Modules.
+
+
 
 Creating your own Modules
 Let’s say we are building an online store app and we need a file to hold all of our helper functions. We can create a module called helpers.js that contains a number of handy helper functions — formatPrice(price), addTax(price) and discountPrice(price, percentage), as well as some variables about the online store itself.
