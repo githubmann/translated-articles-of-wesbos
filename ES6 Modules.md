@@ -115,8 +115,8 @@ import _ from 'lodash';
 
 The idea behind Modules
 Instead of just loading everything into the global namespace, we use import and export statements to share things (variables, functions, data, anything…) between files. Each module will import the dependencies that it needs and export anything that should be made import-able by other files.
-支撑这个机制的想法如下
-代替加载所有文件到全局变量中，我们使用导入导出表达式来共享资源（变量，函数，数据，任何事）在文件之中。每个被导入必须的依赖和导出资源的模块应该是可被其他文件导入。
+模块背后的理念   
+代替加载所有文件到全局变量中，我们使用import和export语句来在文件之中共享资源（变量，函数，数据，任何事）。每个模块将导入自己需要的依赖并导出其他文件需要的资源
 ```
 Getting everything working in current browsers requires a bundle step. We’ll talk about that later in this article, but for now let’s focus on the core ideas behind JavaScript Modules.
 
@@ -124,7 +124,8 @@ Getting everything working in current browsers requires a bundle step. We’ll t
 
 Creating your own Modules
 Let’s say we are building an online store app and we need a file to hold all of our helper functions. We can create a module called helpers.js that contains a number of handy helper functions — formatPrice(price), addTax(price) and discountPrice(price, percentage), as well as some variables about the online store itself.
-
+创建你自己的模块
+比方说，我们将建立一个线上商店应用，我们需要一个文件保存所有的helper函数。我们可以创建一个叫做helpers.js的包，其中包含了若干个helper函数formatPrice(price), addTax(price) and discountPrice(price, percentage)，以及一些跟应用本身的变量
 Our helpers.js file would look like this:
 ```js
 const taxRate = 0.13;
