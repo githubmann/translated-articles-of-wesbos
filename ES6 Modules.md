@@ -119,6 +119,7 @@ Instead of just loading everything into the global namespace, we use import and 
 代替加载所有文件到全局变量中，我们使用import和export语句来在文件之中共享资源（变量，函数，数据，任何事）。每个模块将导入自己需要的依赖并导出其他文件需要的资源
 ```
 Getting everything working in current browsers requires a bundle step. We’ll talk about that later in this article, but for now let’s focus on the core ideas behind JavaScript Modules.
+让所有代码能在当前浏览器中顺利运行需要一个大包步骤。我们将在篇章末尾谈论其相关的知识，现在让我们关注一下js模块背后的核心理念吧。
 
 
 
@@ -146,7 +147,12 @@ function discountPrice(price, percentage) {
 }
 Now, each file can have its own local functions and variables, and unless they are explicitly exported, they won’t ever bleed into the scope of any other files. In the above example, we might not need taxRate to be available to other modules, but it’s a variable we need internally within this module.
 
+现在，每个文件都有他自己的本地变量和函数，并且除非你明确地导出，不然他们将不会渗入其他文件的作用域中。在上面的例子中，我们可能不需要对其他模块可用的taxRate函数,但是我们需要在这个模块内部使用的一个变量。
+
 How do we make the functions and variables above available to other modules? We need to export them. There are two kinds of exports in ES6 – named exports and a single default export. Since we need to make multiple functions and the couponCodes variable available, we will used named exports. More on this in a second.
+
+我们怎么样创建一些让其他模块可用的函数和变量呢？我们需要导出这些函数和变量。在ES6有两种办法导出他们，命名导出和单一默认 导出。因为我们需要创建不同的函数和couponCodes变量，我们将使用被命名的exports.更多信息马上取来
+
 
 The simplest and most straightforward way to export something from a module is to simply stick the export keyword in front, like so:
 ```js
