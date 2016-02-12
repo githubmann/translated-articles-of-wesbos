@@ -155,16 +155,16 @@ How do we make the functions and variables above available to other modules? We 
 
 
 The simplest and most straightforward way to export something from a module is to simply stick the export keyword in front, like so:
+从模块中导出数据，最简单有直接的方法是将export关键词添加到前面，比如这样：
 ```js
 const taxRate = 0.13;
 
 export const couponCodes = ['BLACKFRIDAY', 'FREESHIP', 'HOHOHO'];
-
 export function formatPrice(price) {
     // .. do some formatting
     return formattedPrice;
 }
-
+```
 //  ... 
 We can also export them after the fact:
 ```js
@@ -176,13 +176,20 @@ Or all at once:
 ```js
 export { couponCodes, formatPrice, addTax, discountPrice };
 There are a handful of other ways use export, make sure to check the MDN Docs if you run into a situation where these aren’t working for you.
-
+   还有其他几个导出方法，当你使用导出方式出现问题的时候，请查看mdn文档     
 Default export
 As mentioned before, there are two ways that you can export from a module — named or default. Above were examples of named exports. In order to import these exports into another module, we must know the names of the variables/functions we wish to import — examples of this coming in a second. The benefit of using named exports is that you can export multiple items from a single module.
+默认导出
+正如前面所提到，这里有两个你可以从一个被命名的或者默认的模块导出的方法。上面提到的都是命名的导出。为了导入另一个模块的导出，我们必须知道我们要导出的变量或者函数的名字 - 接下来我们讨论相关问题。使用命名导出的好处是，你可以从一个单一的模块导出不同的项目。
 
 The other type of export is the default export. Use named exports when your module needs to export multiple variables/functions, and use a default export when your module only needs to export one variable/function. While you can use both default exports and named exports within a single module, I’d advise you to pick only one style per module.
 
+另一个导出方法是默认导出。如果你需要导出多重变量/
+函数，可以使用命名导出，如果你的模块仅仅需要导出一个变量/函数，可以使用默认导出。
+虽然你可以在一个单一模块使用两种导出方法，我还是建议你遵循单一原则。
 Examples of default exports may be a single StorePicker React Component or an array of data. For example, if we have the following array of data that we need to make available to other components, we can use export default to export it.
+ 默认导出的例子可能是一个名为StorePicker的React组件或者一个数组。例如，如果我们需要把下面的一个数组导出给其他组件，我们采用默认导出方式。
+
 ```js
 // people.js
 const fullNames = ['Drew Minns', 'Heather Payne', 'Kristen Spencer', 'Wes Bos', 'Ryan Christiani'];
